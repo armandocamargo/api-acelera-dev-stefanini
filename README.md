@@ -40,3 +40,11 @@ https://api.postman.com/collections/10340717-05898356-8a80-42e0-bd42-63432a21292
 <h4 align="center"> 
 	🚧  API 🚀 Em construção...  🚧
 </h4>
+
+### Features
+
+- [x] Listagem de usuário
+- [x] Listagem de produtos
+- [x] Cadastro de entrada produtos
+- [ ] Listagem de pedidos
+- [ ] Leitura de arquivo xslx
