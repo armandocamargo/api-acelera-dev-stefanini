@@ -5,7 +5,9 @@ import br.com.acamargo.api.cliente.ClienteRepository;
 import br.com.acamargo.api.pedido.Pedido;
 import br.com.acamargo.api.pedido.PedidoInfo;
 import br.com.acamargo.api.pedido.PedidoRepository;
+import br.com.acamargo.api.produto.Produto;
 import br.com.acamargo.api.relatorio.Relatorio;
+import br.com.acamargo.api.relatorio.RelatorioPorMes;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.http.ResponseEntity;
@@ -15,8 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.time.temporal.TemporalAdjusters;
+import java.util.*;
 
 @Getter
 @Setter
@@ -30,6 +35,35 @@ public class RelatorioController {
     public RelatorioController(ClienteRepository clienteRepository, PedidoRepository pedidoRepository) {
         this.clienteRepository = clienteRepository;
         this.pedidoRepository = pedidoRepository;
+    }
+
+    @GetMapping("/{ano}/{mes}")
+    public ResponseEntity<RelatorioPorMes> gerarRelatorioPorMesEAno(@PathVariable int ano, @PathVariable int mes) {
+        Date dataInicial = Date.from(LocalDate.of(ano, mes, 1).atStartOfDay(ZoneId.systemDefault()).toInstant());
+        Date dataFinal = Date.from(LocalDate.of(ano, mes, 1).with(TemporalAdjusters.lastDayOfMonth()).atTime(LocalTime.MAX).atZone(ZoneId.systemDefault()).toInstant());
+
+        List<Pedido> pedidosDoMes = pedidoRepository.findByDataCompraBetween(dataInicial, dataFinal);
+
+        Map<Produto, Integer> vendasPorProduto = new HashMap<>();
+        Map<Produto, Map<Cliente, Integer>> detalhesVendasPorProduto = new HashMap<>();
+
+        for (Pedido pedido : pedidosDoMes) {
+            Produto produto = pedido.getProduto();
+            Cliente cliente = pedido.getCliente();
+            int quantidade = pedido.getQuantidade();
+
+            // Verifique se tanto o produto quanto o cliente não são nulos
+            if (produto != null && cliente != null) {
+                vendasPorProduto.put(produto, vendasPorProduto.getOrDefault(produto, 0) + quantidade);
+
+                // Atualizar detalhes de vendas por produto e cliente
+                Map<Cliente, Integer> detalhesPorCliente = detalhesVendasPorProduto.getOrDefault(produto, new HashMap<>());
+                detalhesPorCliente.put(cliente, detalhesPorCliente.getOrDefault(cliente, 0) + quantidade);
+                detalhesVendasPorProduto.put(produto, detalhesPorCliente);
+            }
+        }
+
+        return ResponseEntity.ok(new RelatorioPorMes(dataInicial, dataFinal, vendasPorProduto, detalhesVendasPorProduto));
     }
 
     @GetMapping("/{cpf}")
