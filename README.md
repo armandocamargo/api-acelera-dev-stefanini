@@ -33,6 +33,9 @@ spring.datasource.password=SenhaBancoDeDados
     "dataEntradaProduto" : "31/01/2024"
 }
 ```
+
+/pedidos/xlsx incluir arquivo com o nome produtos.xlsx com as colunas: codigo do produto, cpf do cliente, quantidade comprada, data da compra para que de entrada no estoque.
+
 ## Collection Postman
 
 https://api.postman.com/collections/10340717-05898356-8a80-42e0-bd42-63432a212925?access_key=PMAT-01HPPKQTYXR74MNRV8029RZBXF
