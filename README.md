@@ -39,7 +39,7 @@ spring.datasource.password=SenhaBancoDeDados
 
 ## Collection Postman
 
-[https://api.postman.com/collections/10340717-05898356-8a80-42e0-bd42-63432a212925?access_key=PMAT-01HPPKQTYXR74MNRV8029RZBXF](https://api.postman.com/collections/10340717-05898356-8a80-42e0-bd42-63432a212925?access_key=PMAT-01HPPKQTYXR74MNRV8029RZBXF)
+Pode baixar a collection no proprio projeto
 
 <h4 align="center"> 
 	🚧  API 🚀 Em construção...  🚧
