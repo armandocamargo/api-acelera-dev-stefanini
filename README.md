@@ -19,8 +19,6 @@ spring.datasource.password=SenhaBancoDeDados
 ### GET
 /clientes retorna as informações dos clientes em formato json com os seguintes dados: nome, data de nascimento, cpf e o cep.
 
-/clientes/"cpf" retorna as informações dos clientes em formato json com os seguintes dados: nome, data de nascimento, cpf, cep, logradouro, bairro, localidade e UF.
-
 /produtos retorna as informações dos produtos em formato json com os seguintes dados: codigo, nome e  o preço.
 
 
