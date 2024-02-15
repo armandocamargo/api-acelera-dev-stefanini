@@ -21,6 +21,8 @@ spring.datasource.password=SenhaBancoDeDados
 
 /produtos retorna as informações dos produtos em formato json com os seguintes dados: codigo, nome e  o preço.
 
+/relatorio/{cpf} retorna as informações completas do endereço do clinete e todos os pedidos com quantidade e data da compra.
+
 
 ### POST
 /estoque/"id" informar o id do produto e informar a quantidade e data de entrada do produto em formato json para dar entrada de mercadoria no estoque conforme exemplo abaixo:
@@ -45,5 +47,6 @@ https://api.postman.com/collections/10340717-05898356-8a80-42e0-bd42-63432a21292
 - [x] Listagem de produtos
 - [x] Cadastro de entrada produtos
 - [x] Leitura de arquivo xslx
-- [ ] Listagem de pedidos
+- [x] Listagem de pedidos
+- [ ] Listagem de um relatorio de venda por mes
 
