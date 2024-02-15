@@ -17,13 +17,15 @@ spring.datasource.password=SenhaBancoDeDados
 ## Usos
 
 ### GET
-/clientes retorna as informações dos clientes em formato json com os seguintes dados: nome, data de nascimento, cpf e o cep.
+*/clientes retorna as informações dos clientes em formato json com os seguintes dados: nome, data de nascimento, cpf e o cep.*
 
-/produtos retorna as informações dos produtos em formato json com os seguintes dados: codigo, nome e  o preço.
+*/produtos retorna as informações dos produtos em formato json com os seguintes dados: codigo, nome e  o preço.*
+
+*/relatorio/{cpf} retorna as informações completas do endereço do clinete e todos os pedidos com quantidade e data da compra.*
 
 
 ### POST
-/estoque/"id" informar o id do produto e informar a quantidade e data de entrada do produto em formato json para dar entrada de mercadoria no estoque conforme exemplo abaixo:
+*/estoque/"id" informar o id do produto e informar a quantidade e data de entrada do produto em formato json para dar entrada de mercadoria no estoque conforme exemplo abaixo:*
 
 ```
 {
@@ -31,6 +33,9 @@ spring.datasource.password=SenhaBancoDeDados
     "dataEntradaProduto" : "31/01/2024"
 }
 ```
+
+*/pedidos/xlsx incluir arquivo com o nome produtos.xlsx com as colunas: codigo do produto, cpf do cliente, quantidade comprada, data da compra para que de entrada no estoque.*
+
 ## Collection Postman
 
 https://api.postman.com/collections/10340717-05898356-8a80-42e0-bd42-63432a212925?access_key=PMAT-01HPPKQTYXR74MNRV8029RZBXF
@@ -45,5 +50,6 @@ https://api.postman.com/collections/10340717-05898356-8a80-42e0-bd42-63432a21292
 - [x] Listagem de produtos
 - [x] Cadastro de entrada produtos
 - [x] Leitura de arquivo xslx
-- [ ] Listagem de pedidos
+- [x] Listagem de pedidos
+- [ ] Listagem de um relatorio de venda por mes
 
