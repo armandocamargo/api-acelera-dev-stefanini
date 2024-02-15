@@ -9,7 +9,7 @@ public class ClienteService {
     @Autowired
     private ClienteRepository repository;
 
-    public Cliente getClientesByCpf(Long cpf) {
+    public Cliente getClientesByCpf(long cpf) {
         return repository.findByCpf(cpf);
     }
 }

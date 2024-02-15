@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Table(name = "estoque")
 @Entity(name = "estoque")
 @Getter
@@ -17,7 +19,7 @@ public class Estoque {
     private Long id;
     private long produtoId;
     private long quantidade;
-    private String dataEntradaProduto;
+    private Date dataEntradaProduto;
 
     public Estoque(Long id, DadosEntradaEstoque dados) {
         this.produtoId = id;
