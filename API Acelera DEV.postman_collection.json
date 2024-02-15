@@ -1,0 +1,160 @@
+{
+	"info": {
+		"_postman_id": "05898356-8a80-42e0-bd42-63432a212925",
+		"name": "API Acelera DEV",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10340717"
+	},
+	"item": [
+		{
+			"name": "Listagem de clientes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/clientes",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"clientes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listagem de produtos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/produtos",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"produtos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Atualizar Estoque",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"quantidade\" : \"7\",\r\n    \"dataEntradaProduto\" : \"02/2024\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/estoque/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"estoque",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Endpoin para envio do xlsx",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "multipart/form-data",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "produtos.xlsx"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/pedidos/xlsx",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pedidos",
+						"xlsx"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listagem pedidos por cliente",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/relatorio/{cpf}",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"relatorio",
+						"{cpf}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listagem de um relatorio de venda por mes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/relatorio/{ano}/{mes}",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"relatorio",
+						"{ano}",
+						"{mes}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
